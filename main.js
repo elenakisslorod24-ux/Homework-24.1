@@ -6,7 +6,7 @@
 */
 
 function sumArray(numbers) {
-  // code here
+  return numbers.reduce((sum, num) => sum + num, 0);
 }
 
 // Використання функції
@@ -22,7 +22,7 @@ function sumArray(numbers) {
 */
 
 function doubleArrayElements(numbers) {
-  // code here
+  return numbers.map(num => num * 2);
 }
 
 // Використання функції
@@ -52,7 +52,20 @@ function doubleArrayElements(numbers) {
 */
 
 class SkillsManager {
-  // code here
+  constructor() {
+    this.skills = [];
+  }
+  addSkill(skill) {
+    if (typeof skill === 'string' && skill.length >= 2) {
+      this.skills.push(skill);
+      return skill;
+    }
+    return null;
+  }
+
+  getAllSkills() {
+    return this.skills;
+  }
 }
 
 // const skillsManager = new SkillsManager()
@@ -77,17 +90,19 @@ class SkillsManager {
  */
 
 function DateCalculator(initialDate) {
+  this.date = new Date(initialDate);
+
   this.addDays = function(days) {
-    // code here
+    this.date.setDate(this.date.getDate() + days);
   }
 
   this.subtractDays = function(days) {
-    // code here
+    this.date.setDate(this.date.getDate() - days);
   }
 
   this.getResult = function() {
-    // code here
-  }
+    return this.date.toISOString().split('T')[0];
+  };
 }
 
 // Демонстрація використання
